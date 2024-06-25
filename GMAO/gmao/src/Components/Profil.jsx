@@ -1,4 +1,6 @@
 import React from 'react'
+import Navbar from './Navbar';
+
 
 export default function Profil() {
     const utilisateur = {
@@ -11,7 +13,10 @@ export default function Profil() {
       };
     
       return (
-        <div className="bg-gray-100 p-4 mx-10 mt-10">
+        
+        <div>
+          <Navbar/>
+          <div className="bg-gray-100 p-4 mx-10 mt-10">
           <h2 className="text-2xl font-bold">Profil</h2>
     
           <div className="mt-4">
@@ -40,5 +45,11 @@ export default function Profil() {
             <span className="font-bold">{utilisateur.adresse}</span>
           </div>
         </div>
+        </div>
+
+
+
+
+
       );
 }

@@ -1,4 +1,6 @@
 import React from 'react'
+import Navbar from './Navbar';
+
 
 export default function Incidents() {
 
@@ -11,6 +13,8 @@ export default function Incidents() {
   return (
 
     <div>  
+      <Navbar/>
+
       <div className="bg-gray-100 p-4 mx-10 mt-10">
           <h1 className="text-black text-2xl font-bold">Incidents en cours</h1>
             <div className="container mx-auto">

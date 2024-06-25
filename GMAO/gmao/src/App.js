@@ -1,11 +1,11 @@
 import React from "react";
 import Dashboard from "./Components/Dashboard";
 import Homepage from "./Components/Homepage";
-import Navbar from "./Components/Navbar";
 import Profil from "./Components/Profil";
 import Incidents from "./Components/Incidents";
 import Stock from "./Components/Stock";
 import Machines from "./Components/Machines";
+import Login from "./Login/Login";
 
 
 
@@ -20,8 +20,7 @@ function App() {
     
     <div>
       
-      <h1 className="text-3xl text-white font-bold">GMAO</h1>
-      <Navbar />
+      
       <BrowserRouter> 
       <Routes>
         <Route path="/" element={<Homepage/>} />
@@ -30,6 +29,7 @@ function App() {
         <Route path="/Incidents" element={<Incidents/>} />
         <Route path="/Machines" elements={<Machines/>} />
         <Route path="/Stock" element={<Stock/>} />
+        <Route path="/Login" element={<Login/>} />
       </Routes>
       </BrowserRouter>
       

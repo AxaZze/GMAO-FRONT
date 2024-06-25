@@ -1,9 +1,11 @@
 import React from 'react'
+import Navbar from './Navbar'
+
 
 export default function Stock() {
   return (
     <div>
-    
+    <Navbar/>
     
     <div className="bg-gray-100 p-4 mx-10 mt-10">
         <h1 className="text-black text-2xl font-bold">Incidents</h1>
