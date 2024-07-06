@@ -39,7 +39,9 @@ export default function Login() {
   return (
     <div className="container flex flex-col items-center justify-center min-h-screen">
       <div className="form-container bg-white border-2 border-orange-500 rounded-lg p-10">
-        <div className="logo"></div>
+        <div>
+          <img src='/public/logo192.jpg' alt='Logo'/>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold" htmlFor="email">
