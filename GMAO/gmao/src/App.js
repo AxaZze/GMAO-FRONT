@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboard from "./Components/Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import Homepage from "./Components/Homepage";
 import Profil from "./Components/Profil";
 import Incidents from "./Incidents/Incidents";
@@ -8,12 +8,20 @@ import Materiel from "./Components/Materiel";
 import Login from "./Login/Login";
 import Piece from "./Piece/Piece";
 
+
+
 // Administration
 import Administration from "./Administration/Administration";
-import GestionCompte from "./Administration/GestionCompte";
+import GestionCompte from "./Administration/Compte/GestionCompte";
+import Fournisseur from "./Administration/Fournisseur/Fournisseur";
+import MachineAdmin from "./Administration/Machine/MachineAdmin";
+import AdminEmplacement from "./Administration/Emplacement/AdminEmplacement";
+import AdminPiece from "./Administration/Pieces/AdminPiece";
+
+
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Fournisseur from "./Administration/Fournisseur";
+
 
 
 
@@ -36,11 +44,16 @@ function App() {
         <Route path="/Stock" element={<Stock/>} />
         <Route path="/Login" element={<Login/>} />  
         <Route path="/Pieces" element={<Piece />} />
+        
 
         [Pages d'administration]
         <Route path="/Administration" element={<Administration/>} />
         <Route path="/Administration/GestionCompte" element={<GestionCompte/>} />
         <Route path="/Administration/FournisseursFabriquants" element={<Fournisseur/>} />
+        <Route path="/Administration/Machines" element={<MachineAdmin/>} />
+        <Route path="/Administration/Emplacements" element={<AdminEmplacement/>} />
+        <Route path="/Administration/Pieces" element={<AdminPiece/>} />
+
       </Routes>
       </BrowserRouter>
       

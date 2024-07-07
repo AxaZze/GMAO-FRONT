@@ -13,6 +13,21 @@ export default function Administration() {
         <p></p> <br/>
 
 
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.4</h1>
+        <p>
+          - Revue de l'architecture de la plateforme <br/>
+          - Ajout administration des machines <br/>
+          - Ajout administration des emplacements <br/>
+        </p> <br/>
+
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.3</h1>
+        <p>
+          - Ajout Gestion des comptes utilisateur <br/>
+          - Ajout Gestion des fournisseurs <br/>
+          - Ajout Gestion des fabriquants  
+        </p> <br/>
+
+
         <h1 className="text-black text-2xl font-bold">Note de version - v0.2</h1>
         <p>
           - Mise en place page de connexion utilisateur <br/>

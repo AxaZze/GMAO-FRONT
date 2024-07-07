@@ -12,19 +12,13 @@ export default function AdministrationNav() {
             <a href="/Administration/FournisseursFabriquants" className="text-lg font-medium hover:text-red-500">Fournisseurs-Fabriquants</a>
             </li>
             <li>
-            <a href="/" className="text-lg font-medium hover:text-red-500">Machines</a>
+            <a href="/Administration/Machines" className="text-lg font-medium hover:text-red-500">Machines</a>
             </li>
             <li>
-            <a href="/" className="text-lg font-medium hover:text-red-500">Pieces</a>
+            <a href="/Administration/Pieces" className="text-lg font-medium hover:text-red-500">Pieces</a>
             </li>
             <li>
-            <a href="/" className="text-lg font-medium hover:text-red-500">Interventions</a>
-            </li>
-            <li>
-            <a href="/" className="text-lg font-medium hover:text-red-500">Stock</a>
-            </li>
-            <li>
-            <a href="/" className="text-lg font-medium hover:text-red-500">Emplacements</a>
+            <a href="/Administration/Emplacements" className="text-lg font-medium hover:text-red-500">Emplacements</a>
             </li>
             <li>
             <a href="http://localhost:8080/swagger-ui/index.html" target="_blank" rel="noopener noreferrer" className="text-lg font-medium hover:text-red-500">Swagger</a>

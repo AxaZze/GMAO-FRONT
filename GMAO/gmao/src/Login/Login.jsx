@@ -40,7 +40,7 @@ export default function Login() {
     <div className="container flex flex-col items-center justify-center min-h-screen">
       <div className="form-container bg-white border-2 border-orange-500 rounded-lg p-10">
         <div>
-          <img src='/public/logo192.jpg' alt='Logo'/>
+          <img src='./GMAO_LOGO.png' alt='Logo'/>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
