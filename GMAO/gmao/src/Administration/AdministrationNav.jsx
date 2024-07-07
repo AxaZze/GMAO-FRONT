@@ -9,6 +9,9 @@ export default function AdministrationNav() {
             <a href="/Administration/GestionCompte" className="text-lg font-medium hover:text-red-500">Gestion des Comptes</a>
             </li>
             <li>
+            <a href="/Administration/FournisseursFabriquants" className="text-lg font-medium hover:text-red-500">Fournisseurs-Fabriquants</a>
+            </li>
+            <li>
             <a href="/" className="text-lg font-medium hover:text-red-500">Machines</a>
             </li>
             <li>
