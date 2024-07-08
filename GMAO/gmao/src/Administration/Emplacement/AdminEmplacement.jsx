@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../Components/Navbar'
 import AdministrationNav from '../AdministrationNav'
 import EmplacementPopup from './EmplacementPopup'
+import axios from 'axios'; 
 
 export default function AdminEmplacement() {
   
   const [isEmplacementOpen, setEmplacementOpen] = useState(false);
   
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('http://localhost:8080/api/emplacement', {
+        headers: {
+          'Accept': '*/*',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImp0aSI6IjEiLCJpYXQiOjE3MjA0Nzc1MjksImV4cCI6MTcyMDU2MzkyOX0.23eIVCkD9LiFqsfdKod3g3O4Zpd0zmy9-7yqaCAAMy0',
+        },
+      });
+      const responseData = await response.data;
+      setData(responseData);
+    };
+
+    fetchData();
+  }, []);
+
+
   
   return (
     <div>
@@ -26,7 +45,7 @@ export default function AdminEmplacement() {
             </div>
 
             {isEmplacementOpen && <EmplacementPopup onClose={() => setEmplacementOpen(false)} />}
-
+    
             <div className="bg-gray-100 p-1 mx-2 mt-10">
                     <div className="container mx-auto">
                     <table className="w-full bg-white shadow-md rounded-lg mt-8">
@@ -38,14 +57,21 @@ export default function AdminEmplacement() {
                         </thead>
 
                         <tbody>
+                        {data.map((item) => (
                             <tr className="border-t">
-                            <td className="p-2">1</td>
-                            <td className="p-2">Charleville-Mézière</td>
+                            <td className="p-2">{item.id}</td>
+                            <td className="p-2">{item.emplacement}</td>
                             </tr>
+                        ))}
                         </tbody>
+
+                        
                     </table>
                 </div>
             </div>
+
+
+
         </div>
 
 

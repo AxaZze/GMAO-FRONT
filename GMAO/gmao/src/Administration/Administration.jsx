@@ -13,6 +13,14 @@ export default function Administration() {
         <p></p> <br/>
 
 
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.5</h1>
+        <p>
+          - Mise en place route GET emplacements pour administration <br/>
+          - Mise en place route POST emplacements pour administration <br/>
+          - Correction requete CORS
+        </p> <br/>
+
+
         <h1 className="text-black text-2xl font-bold">Note de version - v0.4</h1>
         <p>
           - Revue de l'architecture de la plateforme <br/>

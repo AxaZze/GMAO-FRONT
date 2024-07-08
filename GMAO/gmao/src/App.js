@@ -3,8 +3,8 @@ import Dashboard from "./Dashboard/Dashboard";
 import Homepage from "./Components/Homepage";
 import Profil from "./Components/Profil";
 import Incidents from "./Incidents/Incidents";
-import Stock from "./Components/Stock";
-import Materiel from "./Components/Materiel";
+import Stock from "./Stock/Stock";
+import Materiel from "./Materiel/Materiel"
 import Login from "./Login/Login";
 import Piece from "./Piece/Piece";
 

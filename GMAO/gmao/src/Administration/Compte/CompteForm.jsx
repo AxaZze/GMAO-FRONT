@@ -12,9 +12,7 @@ const PopupForm = ({ onClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Envoyer les données du nouvel utilisateur à votre API ou base de données
-    // ...
-
+    
     onClose();
     window.location.reload()
   };
