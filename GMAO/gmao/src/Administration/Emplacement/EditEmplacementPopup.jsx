@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const PopupForm = ({ onClose }) => {
-  const [nom, setNom] = useState('');
+const EditEmplacementPopup = ({ id, libelle, onClose, onSubmit }) => {
+  const [editedLibelle, setEditedLibelle] = useState(libelle || '');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,8 +15,8 @@ const PopupForm = ({ onClose }) => {
     setError(null); 
 
     try {
-      const response = await axios.post('http://localhost:8080/api/emplacement', {
-        emplacement: nom, 
+      const response = await axios.put(`http://localhost:8080/api/emplacement/${id}`, {
+        emplacement: editedLibelle, 
       }, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -27,7 +27,7 @@ const PopupForm = ({ onClose }) => {
 
       console.log('Request successful:', response.data);
       
-      onClose(); 
+      onClose(); // Call onClose function to close popup
     } catch (error) {
       console.error('Request failed:', error);
       setError(error.message); 
@@ -35,16 +35,16 @@ const PopupForm = ({ onClose }) => {
       setIsLoading(false); 
     }
 
-    window.location.reload()
+    // Avoid full page reload, update data locally if successful (implementation depends on your app state management)
   };
 
   const handleChange = (event) => {
-    setNom(event.target.value);
+    setEditedLibelle(event.target.value);
   };
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-      <h2 className="text-gray-800 text-lg font-bold mb-4">Créer un nouvel Emplacement</h2>
+      <h2 className="text-gray-800 text-lg font-bold mb-4">Modifier l'Emplacement</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-2">
@@ -53,7 +53,7 @@ const PopupForm = ({ onClose }) => {
             type="text"
             id="nom"
             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={nom}
+            value={editedLibelle}
             onChange={handleChange}
           />
         </div>
@@ -64,7 +64,7 @@ const PopupForm = ({ onClose }) => {
             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
             disabled={isLoading} // Disable submit button while loading
           >
-            {isLoading ? 'Envoi...' : 'Créer'}
+            {isLoading ? 'Envoi...' : 'Modifier'}
           </button>
 
           <button
@@ -82,4 +82,4 @@ const PopupForm = ({ onClose }) => {
   );
 };
 
-export default PopupForm;
+export default EditEmplacementPopup;

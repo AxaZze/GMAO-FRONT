@@ -7,15 +7,16 @@ import axios from 'axios';
 export default function AdminEmplacement() {
   
   const [isEmplacementOpen, setEmplacementOpen] = useState(false);
-  
+ 
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      const accessToken = localStorage.getItem('access_token');
       const response = await axios.get('http://localhost:8080/api/emplacement', {
         headers: {
           'Accept': '*/*',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImp0aSI6IjEiLCJpYXQiOjE3MjA0Nzc1MjksImV4cCI6MTcyMDU2MzkyOX0.23eIVCkD9LiFqsfdKod3g3O4Zpd0zmy9-7yqaCAAMy0',
+          'Authorization': `Bearer ${accessToken}`,
         },
       });
       const responseData = await response.data;
@@ -25,8 +26,6 @@ export default function AdminEmplacement() {
     fetchData();
   }, []);
 
-
-  
   return (
     <div>
         <Navbar />

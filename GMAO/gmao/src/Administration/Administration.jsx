@@ -13,13 +13,20 @@ export default function Administration() {
         <p></p> <br/>
 
 
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.6</h1>
+        <p>
+          - Modification page d'authentification <br/>
+          - Ajout du token réel dans le localStorage <br/>
+          - Modification des routes pour ajout du token automatique <br/>
+          - Début désérialisation du token dans page de Profil <br/>
+        </p> <br/>
+
         <h1 className="text-black text-2xl font-bold">Note de version - v0.5</h1>
         <p>
           - Mise en place route GET emplacements pour administration <br/>
           - Mise en place route POST emplacements pour administration <br/>
           - Correction requete CORS
         </p> <br/>
-
 
         <h1 className="text-black text-2xl font-bold">Note de version - v0.4</h1>
         <p>

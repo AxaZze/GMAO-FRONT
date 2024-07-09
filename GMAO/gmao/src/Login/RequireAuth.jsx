@@ -7,7 +7,7 @@ export default function RequireAuth() {
     
     // Vérification si token existe
     const isAuthenticated = () => {
-        return localStorage.getItem('token') !== null;
+        return localStorage.getItem('access_token') !== null;
     };
  
     useEffect(() => {

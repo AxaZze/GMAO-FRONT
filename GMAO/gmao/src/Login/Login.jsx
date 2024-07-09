@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
@@ -7,34 +7,30 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const Navigate = useNavigate();
+
     const handleSubmit = async (event) => {
       event.preventDefault();
-  /*
+
+      const data = {
+        email,
+        password,
+      };
+
       try {
-        const response = await axios.post('http://localhost:8080/user/connect', {
-          email,
-          password,
-        });
-  */
-        const token = "CECIESTUNTOKEN";
-        localStorage.setItem('token', token);
+        // Use Axios to send a POST request
+        const response = await axios.post('http://localhost:8080/api/auth/authenticate', data);
   
-        // Redirection vers une page protégée après une connexion réussie
-        
-            
-            Navigate('/')
-        
-        /*
+        // récuperer Token et stocker vers Localstorage
+        const { access_token } = response.data;
+        localStorage.setItem('access_token', access_token);
+
+        Navigate('/');
       } catch (error) {
-        console.error('Erreur de connexion:', error);
-        // Afficher un message d'erreur à l'utilisateur
-      }*/
+        // Handle errors (e.g., display error message)
+        console.error('Error during login:', error);
+        // You can also display the error message to the user
+      }      
     };
-
-
-
-
-
 
   return (
     <div className="container flex flex-col items-center justify-center min-h-screen">
