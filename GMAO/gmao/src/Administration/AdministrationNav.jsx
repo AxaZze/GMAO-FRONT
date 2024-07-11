@@ -21,6 +21,9 @@ export default function AdministrationNav() {
             <a href="/Administration/Emplacements" className="text-lg font-medium hover:text-red-500">Emplacements</a>
             </li>
             <li>
+            <a href="http://localhost:8082/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium hover:text-red-500">PHPMyAdmin</a>
+            </li>
+            <li>
             <a href="http://localhost:8080/swagger-ui/index.html" target="_blank" rel="noopener noreferrer" className="text-lg font-medium hover:text-red-500">Swagger</a>
             </li>
         </ul>

@@ -12,6 +12,14 @@ export default function Administration() {
         <h1 className="text-black text-2xl font-bold">Note de version - v0.X</h1>
         <p></p> <br/>
 
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.7</h1>
+        - Ajout page de détails pour les incidents <br/>
+        - Ajout page affichage des pièces <br/>
+        - Suppression page Stock <br/>
+        - Ajout page administration des pièces <br/>
+        - Ajout page détails administration des machines <br/>
+        - Modification page machine 
+        <p></p> <br/>
 
         <h1 className="text-black text-2xl font-bold">Note de version - v0.6</h1>
         <p>

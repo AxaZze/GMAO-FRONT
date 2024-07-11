@@ -33,9 +33,6 @@ export default function Navbar() {
             <a href="/Interventions" className="text-lg font-medium hover:text-red-500">Interventions</a>
             </li>
             <li>
-            <a href="/Stock" className="text-lg font-medium hover:text-red-500">Stock</a>
-            </li>
-            <li>
             <a href="/Profil" className="text-lg font-medium hover:text-red-500">Profil</a>
             </li>
             <li>

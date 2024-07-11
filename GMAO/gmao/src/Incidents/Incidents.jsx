@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
+import { Link } from 'react-router-dom';
 
 export default function Incidents() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -69,7 +70,9 @@ export default function Incidents() {
                       <td className="p-2">{panne.machine}</td>
                       <td className="p-2">{panne.panne}</td>
                       <td className="text-right p-2">
-                        <a href={`/pannes/${panne.id}`} className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Détails</a>
+                        <Link to={`/Incidents/${panne.id}`} className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                          Détails
+                        </Link>
                       </td>
                     </tr>
                   ))}
@@ -109,7 +112,9 @@ export default function Incidents() {
                       <td className="p-2">{panne.machine}</td>
                       <td className="p-2">{panne.panne}</td>
                       <td className="text-right p-2">
-                        <a href={`/pannes/${panne.id}`} className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Détails</a>
+                        <Link to={`/Incidents/${panne.id}`} className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                          Détails
+                        </Link>
                       </td>
                     </tr>
                   ))}

@@ -3,11 +3,10 @@ import Dashboard from "./Dashboard/Dashboard";
 import Homepage from "./Components/Homepage";
 import Profil from "./Components/Profil";
 import Incidents from "./Incidents/Incidents";
-import Stock from "./Stock/Stock";
 import Materiel from "./Materiel/Materiel"
 import Login from "./Login/Login";
 import Piece from "./Piece/Piece";
-
+import IncidentsDetails from "./Incidents/IncidentsDetails";
 
 
 // Administration
@@ -17,7 +16,7 @@ import Fournisseur from "./Administration/Fournisseur/Fournisseur";
 import MachineAdmin from "./Administration/Machine/MachineAdmin";
 import AdminEmplacement from "./Administration/Emplacement/AdminEmplacement";
 import AdminPiece from "./Administration/Pieces/AdminPiece";
-
+import AdministrationMachineDetails from "./Administration/Machine/AdministrationMachineDetails";
 
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
@@ -41,16 +40,16 @@ function App() {
         <Route path="/Profil" element={<Profil/>} />
         <Route path="/Incidents" element={<Incidents/>} />
         <Route path="/Materiel" element={<Materiel/>} />
-        <Route path="/Stock" element={<Stock/>} />
         <Route path="/Login" element={<Login/>} />  
         <Route path="/Pieces" element={<Piece />} />
-        
+        <Route path="/Incidents/:incidentId" element={<IncidentsDetails />} />
 
         [Pages d'administration]
         <Route path="/Administration" element={<Administration/>} />
         <Route path="/Administration/GestionCompte" element={<GestionCompte/>} />
         <Route path="/Administration/FournisseursFabriquants" element={<Fournisseur/>} />
         <Route path="/Administration/Machines" element={<MachineAdmin/>} />
+        <Route path="/Administration/MachineDetails/:machineId" element={<AdministrationMachineDetails />} />
         <Route path="/Administration/Emplacements" element={<AdminEmplacement/>} />
         <Route path="/Administration/Pieces" element={<AdminPiece/>} />
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../../Components/Navbar'
 import AdministrationNav from '../AdministrationNav'
+import { Link } from 'react-router-dom';
 
 
 export default function MachineAdmin() {
@@ -27,6 +28,7 @@ export default function MachineAdmin() {
                             <th className="text-left p-2">Fournisseur</th>
                             <th className="text-left p-2">Emplacement</th>
                             <th className="text-left p-2">Actif</th>
+                            <th className="text-right p-2">Actions</th>
                         </tr>
                         </thead>
 
@@ -38,6 +40,11 @@ export default function MachineAdmin() {
                             <td className="p-2">Lidll</td>
                             <td className="p-2">A1</td>
                             <td className="p-2">OUI</td>
+                            <td className="text-right p-2">
+                                <Link to={`/Administration/MachineDetails/1`} className="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                                Détails
+                                </Link>
+                            </td>
                             </tr>
                         </tbody>
                     </table>
