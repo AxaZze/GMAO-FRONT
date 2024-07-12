@@ -12,6 +12,13 @@ export default function Administration() {
         <h1 className="text-black text-2xl font-bold">Note de version - v0.X</h1>
         <p></p> <br/>
 
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.8</h1>
+        <p>
+        - Ajout méthode DELETE emplacement <br/>
+        - Ajout méthode PUT emplacement <br/>  
+        </p> <br/>
+
+
         <h1 className="text-black text-2xl font-bold">Note de version - v0.7</h1>
         - Ajout page de détails pour les incidents <br/>
         - Ajout page affichage des pièces <br/>
