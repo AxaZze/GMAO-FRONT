@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const PopupForm = ({ onClose }) => {
-  const [nom, setNom] = useState('');
+const PopupForm = ({ onClose, selectedItemId, selectedNom }) => {
+  
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     const accessToken = localStorage.getItem('access_token');
 
     setIsLoading(true); 
     setError(null); 
 
     try {
-      const response = await axios.post('http://localhost:8080/api/fournisseur', {
-        nom: nom, 
-      }, {
+      const response = await axios.delete(`http://localhost:8080/api/fournisseur/${selectedItemId}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Accept': '*/*',
@@ -38,33 +37,25 @@ const PopupForm = ({ onClose }) => {
     window.location.reload()
   };
 
-  const handleChange = (event) => {
-    setNom(event.target.value);
-  };
+
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-      <h2 className="text-gray-800 text-lg font-bold mb-4">Créer un nouvel Emplacement</h2>
+      <h2 className="text-gray-800 text-lg font-bold mb-4">Supprimer un Fabricant</h2>
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-2">
-          <label htmlFor="nom" className="block text-gray-700">Libellé</label>
-          <input
-            type="text"
-            id="nom"
-            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={nom}
-            onChange={handleChange}
-          />
-        </div>
-
+      <div className="mb-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <p>Attention ! Vous êtes sur le point de supprimer le fabricant suivant :</p>
+      <br />
+      <p>ID : {selectedItemId} <br/>Libellé: {selectedNom}</p>
+    </div>
         <div className="flex justify-center items-center mt-2">
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
             disabled={isLoading} // Disable submit button while loading
           >
-            {isLoading ? 'Envoi...' : 'Créer'}
+            {isLoading ? 'Envoi...' : 'Supprimer'}
           </button>
 
           <button

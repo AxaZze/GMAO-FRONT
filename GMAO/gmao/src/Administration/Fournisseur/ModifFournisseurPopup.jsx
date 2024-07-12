@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const PopupForm = ({ onClose }) => {
-  const [nom, setNom] = useState('');
+const PopupForm = ({ onClose, selectedItemId, selectedNom }) => {
+  const [nom, setNom] = useState(selectedNom);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,7 +16,7 @@ const PopupForm = ({ onClose }) => {
     setError(null); 
 
     try {
-      const response = await axios.post('http://localhost:8080/api/fournisseur', {
+      const response = await axios.put(`http://localhost:8080/api/fournisseur/${selectedItemId}`, {
         nom: nom, 
       }, {
         headers: {
@@ -44,7 +45,7 @@ const PopupForm = ({ onClose }) => {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-      <h2 className="text-gray-800 text-lg font-bold mb-4">Créer un nouvel Emplacement</h2>
+      <h2 className="text-gray-800 text-lg font-bold mb-4">Modifier un Fournisseur</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-2">
@@ -57,14 +58,13 @@ const PopupForm = ({ onClose }) => {
             onChange={handleChange}
           />
         </div>
-
         <div className="flex justify-center items-center mt-2">
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
             disabled={isLoading} // Disable submit button while loading
           >
-            {isLoading ? 'Envoi...' : 'Créer'}
+            {isLoading ? 'Envoi...' : 'Modifier'}
           </button>
 
           <button

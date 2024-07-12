@@ -37,6 +37,14 @@ export default function Administration() {
         <h1 className="text-black text-2xl font-bold">Note de version - v0.X</h1>
         <p></p> <br/>
 
+        <h1 className="text-black text-2xl font-bold">Note de version - v0.9</h1>
+        <p>
+          - Ajout méthode GET Fabricant <br/>
+          - Ajout méthode POST Fabricant <br/>
+          - Ajout méthode DELETE Fabricant <br/>
+          - Ajout méthode PUT Fabricant
+        </p> <br/>
+
         <h1 className="text-black text-2xl font-bold">Note de version - v0.8</h1>
         <p>
         - Ajout méthode DELETE emplacement <br/>
