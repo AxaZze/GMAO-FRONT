@@ -17,7 +17,7 @@ import MachineAdmin from "./Administration/Machine/MachineAdmin";
 import AdminEmplacement from "./Administration/Emplacement/AdminEmplacement";
 import AdminPiece from "./Administration/Pieces/AdminPiece";
 import AdministrationMachineDetails from "./Administration/Machine/AdministrationMachineDetails";
-
+import AdminFabricant from "./Administration/Fabricant/AdminFabricant";
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 
@@ -47,11 +47,12 @@ function App() {
         [Pages d'administration]
         <Route path="/Administration" element={<Administration/>} />
         <Route path="/Administration/GestionCompte" element={<GestionCompte/>} />
-        <Route path="/Administration/FournisseursFabriquants" element={<Fournisseur/>} />
+        <Route path="/Administration/Fournisseurs" element={<Fournisseur/>} />
         <Route path="/Administration/Machines" element={<MachineAdmin/>} />
         <Route path="/Administration/MachineDetails/:machineId" element={<AdministrationMachineDetails />} />
         <Route path="/Administration/Emplacements" element={<AdminEmplacement/>} />
         <Route path="/Administration/Pieces" element={<AdminPiece/>} />
+        <Route path="/Administration/Fabriquants" element={<AdminFabricant/>} />
 
       </Routes>
       </BrowserRouter>

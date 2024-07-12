@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../../Components/Navbar'
 import AdministrationNav from '../AdministrationNav'
-import FabricantPopup from './FabricantPopup'
+import FabricantPopup from '../Fabricant/FabricantPopup'
 import FournisseurPopup from './FournisseurPopup'
 
 

@@ -3,11 +3,36 @@ import Navbar from '../Components/Navbar'
 import AdministrationNav from './AdministrationNav'
 
 export default function Administration() {
+
+  const lienPHP = (url) => {
+    window.open(url, '_blank')
+  }
+
+  const lienSwagger = (url) => {
+    window.open(url, '_blank')
+  }
+
+
   return (
     <div>
       <Navbar />
       <AdministrationNav />
-      
+      <div className="bg-gray-100 p-4 mx-10 mt-10">
+          <button
+            className="bg-green-500 text-white px-4 py-2 rounded-md md:w-1/2"
+            onClick={() => lienSwagger("http://localhost:8080/swagger-ui/index.html")}
+          >
+            Swagger
+          </button>
+
+          <button
+            className="bg-yellow-600 text-white px-4 py-2 rounded-md md:w-1/2"
+            onClick={() => lienPHP("http://localhost:8082/")}
+          >
+            PHPMyAdmin
+          </button>
+      </div>
+
       <div className="bg-gray-100 p-4 mx-10 mt-10">
         <h1 className="text-black text-2xl font-bold">Note de version - v0.X</h1>
         <p></p> <br/>
@@ -16,6 +41,13 @@ export default function Administration() {
         <p>
         - Ajout méthode DELETE emplacement <br/>
         - Ajout méthode PUT emplacement <br/>  
+        - Séparation Fabricants & Fournisseurs <br/>
+        - Ajout GET Fournisseurs <br/>
+        - Ajout POST Fournisseurs <br/>
+        - Ajout DELETE Fournisseurs <br/>
+        - Ajout PUT Fournisseurs <br/>
+        - Suppressions liens Swagger et PHPMyAdmin <br/>
+        - Ajout bouton Swagger et PHPMyAdmin
         </p> <br/>
 
 
