@@ -1,12 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AdministrationNav from '../AdministrationNav'
 import Navbar from '../../Components/Navbar'
 import PopupForm from './CompteForm';
 
+import axios from 'axios';
 
 export default function GestionCompte() {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const [data, setData] = useState([]);
+
+      // Récupération Users
+      useEffect(() => {
+        const fetchData = async () => {
+          const accessToken = localStorage.getItem('access_token');
+          const response = await axios.get('http://localhost:8080/api/users', {
+            headers: {
+              'Accept': '*/*',
+              'Authorization': `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          const responseData = await response.data;
+          setData(responseData);
+        };
+    
+        fetchData();
+      }, []);
+
+    console.log(data)
+
 
   return (
     <div>
@@ -35,6 +59,7 @@ export default function GestionCompte() {
                     <th className="text-left p-2">Nom</th>
                     <th className="text-left p-2">Prénom</th>
                     <th className="text-left p-2">Email</th>
+                    <th className="text-left p-2">Role</th>
                     <th className="text-left p-2">Telephone</th>
                     <th className="text-left p-2">Zone</th>
                     <th className="text-left p-2">Actif</th>
@@ -42,15 +67,18 @@ export default function GestionCompte() {
                 </thead>
 
                 <tbody>
+                  {data.map((item) => (
                     <tr className="border-t">
-                      <td className="p-2">1</td>
-                      <td className="p-2">Dupont</td>
-                      <td className="p-2">JEan</td>
-                      <td className="p-2">a@a.com</td>
-                      <td className="p-2">0656892354</td>
-                      <td className="p-2">A1</td>
-                      <td className="p-2">1</td>
-                    </tr>
+                    <td className="p-2">{item.id}</td>
+                    <td className="p-2">{item.nom}</td>
+                    <td className="p-2">{item.prenom}</td>
+                    <td className="p-2">{item.email}</td>
+                    <td className="p-2">{item.role}</td>
+                    <td className="p-2">{item.telephone}</td>
+                    <td className="p-2">{item.emplacement.emplacement}</td>
+                    <td className="p-2">{item.enabled ? 'Oui' : 'Non'}</td>
+                  </tr>
+                  ))}
                 </tbody>
               </table>
           </div>
