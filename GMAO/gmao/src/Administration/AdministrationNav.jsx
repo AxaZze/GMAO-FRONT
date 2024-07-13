@@ -23,6 +23,9 @@ export default function AdministrationNav() {
             <li>
             <a href="/Administration/Emplacements" className="text-lg font-medium hover:text-red-500">Emplacements</a>
             </li>
+            <li>
+            <a href="/Administration/Pannes" className="text-lg font-medium hover:text-red-500">Pannes</a>
+            </li>
         </ul>
         </nav>
     </div>

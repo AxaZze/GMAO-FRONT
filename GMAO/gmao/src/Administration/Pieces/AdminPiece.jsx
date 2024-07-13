@@ -1,11 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../Components/Navbar'
 import AdministrationNav from '../AdministrationNav'
 import PiecePopup from './PiecePopup'
+import axios from 'axios'
+
+
 
 export default function AdminPiece() {
 
   const[isPieceOpen, setPieceOpen] = useState(false);
+
+  const [data, setData] = useState([]);
+
+     // Récupération Machines
+    useEffect(() => {
+      const fetchData = async () => {
+        const accessToken = localStorage.getItem('access_token');
+        const response = await axios.get('http://localhost:8080/api/piece', {
+          headers: {
+            'Accept': '*/*',
+            'Authorization': `Bearer ${accessToken}`,
+            
+          },
+        });
+        const responseData = await response.data;
+        setData(responseData);
+      };
+  
+      fetchData();
+    }, []);
 
   return (
     <div>
@@ -41,14 +64,19 @@ export default function AdminPiece() {
                         </thead>
 
                         <tbody>
-                            <tr className="border-t">
-                            <td className="p-2">1</td>
-                            <td className="p-2">Boulon qui tourne</td>
-                            <td className="p-2">Heckler & Koch</td>
-                            <td className="p-2">Heckler & Koch</td>
-                            <td className="p-2">Simple boulon</td>
-                            <td className="p-2">789</td>
-                            </tr>
+                            {data.map((item) => (
+                                <tr className="border-t">
+                                    <td className="p-2">{item.id}</td>
+                                    <td className="p-2">{item.nom}</td>
+                                    <td className="p-2">{item.fabricant.nom}</td>
+                                    <td className="p-2">{item.fournisseur.nom}</td>
+                                    <td className="p-2">{item.description}</td>
+                                    <td className="p-2">{item.stock}</td>
+                                </tr>
+                            ))}
+
+
+                            
                         </tbody>
                     </table>
                 </div>

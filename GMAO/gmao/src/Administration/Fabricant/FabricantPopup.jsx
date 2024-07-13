@@ -44,7 +44,7 @@ const PopupForm = ({ onClose }) => {
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-      <h2 className="text-gray-800 text-lg font-bold mb-4">Créer un nouvel Emplacement</h2>
+      <h2 className="text-gray-800 text-lg font-bold mb-4">Créer un nouveau Fabricant</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-2">

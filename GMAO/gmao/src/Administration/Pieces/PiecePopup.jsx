@@ -7,7 +7,11 @@ const PiecePopup = ({ onClose }) => {
   const [description, setDescription] = useState('');
   const [nom, setNom] = useState('');
   const [fournisseurs, setFournisseurs] = useState([]);
-
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedFabricantId, setSelectedFabricantId] = useState('')
+  const [fabricants, setFabricants] = useState([]);
+  
   useEffect(() => {
     const fetchFournisseurs = async () => {
       try {
@@ -28,34 +32,71 @@ const PiecePopup = ({ onClose }) => {
     fetchFournisseurs();
   }, []);
 
+    // Construction liste Fabricants
+    useEffect(() => {
+      const fetchFabricants = async () => {
+        try {
+          const accessToken = localStorage.getItem('access_token');
+            const response = await axios.get('http://localhost:8080/api/fabricant', {
+              headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${accessToken}`,
+              },
+            });
+          const fabricants = response.data;
+          setFabricants(fabricants); // Update fournisseurs state with fetched data
+        } catch (error) {
+          console.error('Erreur lors de la récupération des fabricants:', error);
+        }
+      };
+    
+      fetchFabricants();
+    }, []);
   
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = {
-      nom,
-      description,
-      stock,
-      fournisseurId: selectedFournisseurId,
+      nom: nom,
+        description: description,
+        stock: stock,
+        fournisseurId: selectedFournisseurId,
+        fabricantId: selectedFabricantId,
+        machineIds: [1, 2]
     };
 
     console.log(formData)
 
     try {
-        const response = await axios.post('http://localhost:8080/api/piece', formData);
+      const accessToken = localStorage.getItem('access_token');
+      const response = await axios.post('http://localhost:8080/api/piece', {
+        nom: nom,
+        description: description,
+        stock: 10,
+        fournisseurId: selectedFournisseurId,
+        fabricantId: selectedFabricantId,
+        machineIds: [1]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+        },
+      });
+
+
+      console.log('Request successful:', response.data);
       
-        if (response.status === 200) {
-          // Traiter la réponse réussie (par exemple, fermer la fenêtre contextuelle, afficher un message de confirmation)
-          console.log('Pièce créée avec succès!');
-          onClose();
-          window.location.reload(); // Recharger la page pour refléter les changements
-        } else {
-          console.error('Échec de la création de la pièce:', response.status);
-        }
-      } catch (error) {
-        console.error('Erreur lors de la création de la pièce:', error);
-      }
+      onClose(); 
+    } catch (error) {
+      console.error('Request failed:', error);
+      setError(error.message); 
+    } finally {
+      setIsLoading(false); 
+    }
+
+    //window.location.reload()
   };
 
   return (
@@ -91,6 +132,23 @@ const PiecePopup = ({ onClose }) => {
             ))}
             </select>
 
+
+            <label htmlFor="fabricant" className="block text-gray-700">
+            Fabricant
+            </label>
+                <select
+                    id="fabricant"
+                    value={selectedFabricantId}
+                    onChange={(e) => setSelectedFabricantId(e.target.value)}
+                    className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                    {fabricants.map((fabricant) => (
+                        <option key={fabricant.id} value={fabricant.id}>
+                        {fabricant.nom}
+                        </option>
+                    ))}
+                    </select>  
+
           <label htmlFor="description" className="block text-gray-700">
             Description
           </label>
@@ -99,7 +157,7 @@ const PiecePopup = ({ onClose }) => {
             id="description"
             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={description}
-            onChange={(e) => setDescription(e.value)} // Minor correction: use onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           <label htmlFor="stock" className="block text-gray-700">
@@ -118,6 +176,7 @@ const PiecePopup = ({ onClose }) => {
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700"
+            disabled={isLoading}
           >
             Créer
           </button>
@@ -130,6 +189,7 @@ const PiecePopup = ({ onClose }) => {
           </button>
         </div>
       </form>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };
